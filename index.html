@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul Krishnan | Next-Gen Embedded Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- GSAP & Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Three.js for 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <!-- Three.js 3D Background -->
+    <canvas id="three-canvas" style="position:absolute;inset:0;z-index:0;"></canvas>
+
+    <!-- Hero Text Content -->
+    <div class="hero-content" data-aos="fade-down">
+      <h1>Hi, I'm <span id="typed-name"></span></h1>
+      <p>Embedded Systems Engineer & IoT Visionary</p>
+      <a href="#about" class="btn">Discover More</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-right">
+    <video class="about-image" autoplay muted loop playsinline>
+    <source src="images/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>    <div class="about-text">
+      <h2>About Me</h2>
+      <p>With a passion for pushing hardware to its limits, I blend microcontroller mastery (8051, ESP32), BLE, and mobile integration to create cutting-edge IoT solutions globally adopted.</p>
+    </div>
+  </section>
+
+  <!-- Skills Carousel -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Expertise</h2>
+    <div class="skills-carousel">
+      <div class="skill-item">C &amp; Assembly</div>
+      <div class="skill-item">Embedded C</div>
+      <div class="skill-item">UART/I2C</div>
+      <div class="skill-item">BLE &amp; IoT</div>
+      <div class="skill-item">AI &amp; ML</div>
+      <div class="skill-item">Git</div>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid -->
+  <section id="portfolio" data-aos="fade-up">
+    <h2>Projects Showcase</h2>
+    <div class="portfolio-grid">
+  <div class="card" data-tilt>
+    <video width="100%" controls poster="images/helmet_poster.jpg">
+    <source src="images/smart_helmet_demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+    <div class="card-content">
+      <h3>Smart Helmet HUD</h3>
+      <p>This project integrates an ESP32 microcontroller, MPU6050 sensor, and BLE communication to create a smart bike helmet. It features crash detection, automatic SMS alerting, and turn-by-turn directions received from an Android app using Google Maps API. The minimal OLED display presents essential info to the rider in real time.</p>
+    </div>
+  </div>
+  <div class="card" data-tilt>
+    <video width="100%" controls poster="images/sim.png">
+    <source src="images/sim_video.mp4" type="video/mp4">
+    </video>
+    <div class="card-content">
+      <h3>8051 Dev Board Validation</h3>
+      <p>This system automates testing for an 8051-based development board. Through UART interfacing with a PC terminal, users can trigger and validate individual peripherals such as buzzers, motors, switches, keypads, and LCDs. It significantly reduces manual testing time in academic and lab environments.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+  <!-- Career Highlights Timeline -->
+<section id="timeline" class="spaced-section" data-aos="fade-down">
+  <h2>Career Highlights</h2>
+  <div class="timeline-container">
+    <div class="timeline-pin"></div>
+    <div class="timeline-item" data-year="2020">
+      Started with basic microcontroller programming (8051, C)
+    </div>
+    <div class="timeline-item" data-year="2021">
+      Developed UART, Keypad, LCD interfacing systems
+    </div>
+    <div class="timeline-item" data-year="2022">
+      Explored IoT & BLE integration with ESP32
+    </div>
+    <div class="timeline-item" data-year="2023">
+      Designed 8051 Dev Board Auto Validation System
+    </div>
+    <div class="timeline-item" data-year="2024">
+      Created Smart Helmet HUD with crash detection
+    </div>
+    <div class="timeline-item" data-year="2025">
+      Merged Android app + BLE + Google Maps into deployable smart product
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Get in Touch</h2>
+    <p><a href="resume.pdf" download class="btn">Download Resume (PDF)</a></p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rahul Krishnan. Crafted with Passion & GSAP & Three.js Magic.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const nameEl = document.getElementById('typed-name');
+    const fullName = 'Rahul Krishnan'; let idx = 0;
+    function typeName() {
+      if (idx <= fullName.length) {
+        nameEl.textContent = fullName.slice(0, idx++);
+        setTimeout(typeName, 150);
+      }
+    }
+
+    function initThree() {
+      const canvas = document.getElementById('three-canvas');
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+      const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+      const material = new THREE.MeshStandardMaterial({ color: 0x1dd1a1, metalness: 0.7, roughness: 0.2 });
+      const knot = new THREE.Mesh(geometry, material);
+      scene.add(knot);
+      const light = new THREE.PointLight(0xffffff, 1);
+      light.position.set(5,5,5);
+      scene.add(light);
+      function animate() {
+        requestAnimationFrame(animate);
+        knot.rotation.x += 0.01;
+        knot.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+    }
+
+    window.onload = () => {
+      typeName();
+      initThree();
+
+      window.addEventListener('scroll', () => {
+        const progress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        document.getElementById('progress-bar').style.width = (progress * 100) + '%';
+      });
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to('.timeline-container', {
+        scrollTrigger: {
+          trigger: '#timeline',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+          pin: true
+        }
+      });
+
+      document.querySelectorAll('[data-tilt]').forEach(el => {
+        el.addEventListener('mousemove', e => {
+          const rect = el.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) / 20;
+          const y = (e.clientY - rect.top - rect.height / 2) / 20;
+          gsap.to(el, { rotationY: x, rotationX: -y, ease: 'power3.out', duration: 0.5 });
+        });
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, { rotationY: 0, rotationX: 0, ease: 'power3.out', duration: 0.5 });
+        });
+      });
+    };
+  </script>
+</body>
+</html>
